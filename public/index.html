@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Christmas DnD – Frosthaven Control</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>🎄 Christmas DnD – Frosthaven</h1>
+
+      <div id="role-select">
+        <p>Who are you?</p>
+        <div class="role-buttons">
+          <button data-role="dm">Dungeon Master</button>
+          <button data-role="player">Player</button>
+        </div>
+      </div>
+
+      <div id="main" class="hidden">
+        <div id="top-bar">
+          <span id="role-label"></span>
+        </div>
+
+        <div id="layout">
+          <section id="scene-view" class="card">
+            <h2 id="scene-title"></h2>
+            <p id="scene-player-text"></p>
+          </section>
+
+          <section id="side-panel">
+            <div id="dm-panel" class="card hidden">
+              <h3>DM Panel</h3>
+
+              <label for="scene-select">Current Scene:</label>
+              <select id="scene-select"></select>
+
+              <h4>DM Notes</h4>
+              <p id="scene-dm-notes"></p>
+            </div>
+
+            <div id="dice-roller" class="card">
+              <h3>Dice Roller</h3>
+              <div class="dice-buttons">
+                <button data-dice="20">Roll d20</button>
+                <button data-dice="6">Roll d6</button>
+                <button data-dice="8">Roll d8</button>
+              </div>
+              <div id="dice-result"></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+  </body>
+</html>

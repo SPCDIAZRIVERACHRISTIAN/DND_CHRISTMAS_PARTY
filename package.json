@@ -1,0 +1,13 @@
+{
+  "name": "christmas-dnd-dm-app",
+  "version": "1.0.0",
+  "description": "Local web app for a Christmas DnD one-shot",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.0",
+    "socket.io": "^4.8.0"
+  }
+}

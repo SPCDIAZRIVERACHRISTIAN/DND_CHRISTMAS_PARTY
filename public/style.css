@@ -1,0 +1,173 @@
+:root {
+  --bg: #050510;
+  --bg-alt: #151526;
+  --accent: #e53935;
+  --accent-soft: #ffb74d;
+  --text: #f5f5f5;
+  --muted: #b0b0c0;
+  --radius: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, #18203a 0, #050510 55%);
+  color: var(--text);
+}
+
+#app {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Role select */
+#role-select {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.role-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s;
+}
+
+button:hover {
+  background: #ff5252;
+  box-shadow: 0 0 8px rgba(229, 57, 53, 0.7);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Top bar */
+#top-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Layout */
+#layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Cards */
+.card {
+  background: rgba(5, 5, 18, 0.85);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+}
+
+/* Scene view */
+#scene-view h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+}
+
+#scene-view p {
+  line-height: 1.5;
+}
+
+/* Side panel */
+#side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#dm-panel label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  color: var(--muted);
+}
+
+#scene-select {
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #33384d;
+  background: #0b0b18;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+#scene-dm-notes {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--accent-soft);
+}
+
+/* Dice roller */
+#dice-roller h3 {
+  margin-top: 0;
+}
+
+.dice-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+#dice-result {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* RESPONSIVE */
+
+@media (min-width: 800px) {
+  #layout {
+    flex-direction: row;
+  }
+
+  #scene-view {
+    flex: 2;
+  }
+
+  #side-panel {
+    flex: 1;
+  }
+}
