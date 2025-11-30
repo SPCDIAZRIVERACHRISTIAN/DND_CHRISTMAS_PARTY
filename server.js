@@ -19,7 +19,25 @@ const scenes = [
     playerText:
       "Llegan al pueblo nevado de Frosthaven. Las fogatas están apagadas, los villancicos suenan raros y el pueblo susurra que Santa ha desaparecido.",
     dmNotes:
-      "NPCs: Rudy (reno borrachón), Alcaldesa Tinsel. Mini-boss: GiftGolem ataca el pueblo. Pistas de Pepperminx y del saco mágico robado."
+      "NPCs: Rudy (reno borrachón), Alcaldesa Tinsel. Mini-boss: GiftGolem ataca el pueblo. Pistas de Pepperminx y del saco mágico robado.", // TODO change the location they find the pepperminx
+    story: {
+      line1: "Llegaron a un lugar frío colmado de nieve, una aldea que antes llena de felicidad y alegría hoy esta triste y vacía.",
+      line2: "En la plaza encuentran una taverna nombrada: TRAGA Y VETE!",
+      line3: "Debido a que era el unico lugar abierto deciden entrar.",
+      line4: "Encuntran a los clientes bebiendo como si todos trabajaran en el CDT de Patillas ",
+    },
+    bossFight: {
+      giftGolem: {
+        hp: 40,
+        attacks: {
+          atk1: "candy cane machine gun",
+          atk2: "ribbon strangle",
+          atk3: "Super strength"
+        },
+        loot: "Amulet of Life"
+      },
+      event: "De la nada aparece un monstruo que destruye media taberna los clientes huyen a todas direcciones tratando de salvarse."
+    }
   },
   {
     id: "snowcap",
@@ -27,7 +45,25 @@ const scenes = [
     playerText:
       "El grupo avanza hacia la montaña de Snowcap. El viento corta la cara y la nieve les llega a las rodillas. Algo maligno corrompe el paisaje.",
     dmNotes:
-      "Encuentros: Gingerdead Men, puzzle del puente con villancicos. Introduce a Pepperminx que conoce el plan de Krampus."
+      "Encuentros: Gingerdead Men, puzzle del puente con villancicos. Introduce a Pepperminx que conoce el plan de Krampus.",
+    story: {
+      line1: "Llegaron a un lugar frío colmado de nieve, una aldea que antes llena de felicidad y alegría hoy esta triste y vacía.",
+      line2: "En la plaza encuentran una taverna nombrada: TRAGA Y VETE!",
+      line3: "Debido a que era el unico lugar abierto deciden entrar.",
+      line4: "Encuntran a los clientes bebiendo como si todos trabajaran en el CDT de Patillas ",
+    },
+    bossFight: {
+      pepperminx: {
+        hp: 100,
+        attacks: {
+          atk1: "frost mist",
+          atk2: "claw slash",
+          atk3: "Ice dive bomb"
+        },
+        loot: "Amulet of Life"
+      },
+      event: "En la cima de la montaña aparece frente a ustedes aparece un sphinx volador con olor y sabor a menta"
+    }
   },
   {
     id: "factory",
@@ -35,7 +71,25 @@ const scenes = [
     playerText:
       "Una fábrica oscura con cintas de juguetes malditos, luces parpadeantes y la sensación de que los están observando.",
     dmNotes:
-      "Mini-boss: NutCracker Assassin. Santa está amarrado en la sala final. Perfecto para tiradas de investigación, miedo y roleo intenso."
+      "Mini-boss: NutCracker Assassin. Santa está amarrado en la sala final. Perfecto para tiradas de investigación, miedo y roleo intenso.",
+    story: {
+      line1: "Llegaron a un lugar frío colmado de nieve, una aldea que antes llena de felicidad y alegría hoy esta triste y vacía.",
+      line2: "En la plaza encuentran una taverna nombrada: TRAGA Y VETE!",
+      line3: "Debido a que era el unico lugar abierto deciden entrar.",
+      line4: "Encuntran a los clientes bebiendo como si todos trabajaran en el CDT de Patillas ",
+    },
+    bossFight: {
+      giftGolem: {
+        hp: 40,
+        attacks: {
+          atk1: "candy cane machine gun",
+          atk2: "ribbon strangle",
+          atk3: "Super strength"
+        },
+        loot: "Amulet of Life"
+      },
+      event: "De la nada aparece un monstruo quew destruye media taberna los clientes huyen a todas direcciones tratando de salvarse."
+    }
   },
   {
     id: "krampus",
