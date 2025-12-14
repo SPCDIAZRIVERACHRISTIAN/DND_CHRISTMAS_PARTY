@@ -8,8 +8,78 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+//db setup (SQLite)
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./dnd_characters.db');
+
+// Create table if it doesn't exist
+db.run(`CREATE TABLE IF NOT EXISTS characters (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT,
+  power1 TEXT, desc1 TEXT, weakness TEXT,
+  power2 TEXT, desc2 TEXT,
+  power3 TEXT, desc3 TEXT,
+  role TEXT,
+  health INTEGER DEFAULT 100,
+  mana INTEGER DEFAULT 100,
+  stamina INTEGER DEFAULT 100
+)`);
+
+// servir json dinamicos
+app.use(express.json());
+
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
+
+// Save a new character
+app.post('/api/characters', (req, res) => {
+  const c = req.body;
+  console.log('Saving character:', c);
+  db.run(
+    `INSERT INTO characters (name, power1, desc1, power2, desc2, power3, desc3, weakness, role)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [
+      c.name,
+      c.power1, c.desc1,
+      c.power2, c.desc2,
+      c.power3, c.desc3, c.weakness, c.role,
+    ],
+    function (err) {
+      if (err) return res.status(500).json({ error: 'DB error' });
+      res.json({ id: this.lastID });
+      io.emit('Character:added');
+    }
+  );
+});
+
+app.get('/api/characters/:id', (req, res) => {
+  db.get('SELECT * FROM characters WHERE id = ?', [req.params.id], (err, row) => {
+    if (err) return res.status(500).json({ error: 'DB error' });
+    if (!row) return res.status(404).json({ error: 'Not found' });
+    res.json(row);
+  });
+});
+
+app.put('/api/characters/:id', (req, res) => {
+  const { health, mana, stamina } = req.body;
+  db.run(
+    `UPDATE characters SET health = ?, mana = ?, stamina = ? WHERE id = ?`,
+    [health, mana, stamina, req.params.id],
+    function (err) {
+      if (err) return res.status(500).json({ error: 'DB error' });
+      if (this.changes === 0) return res.status(404).json({ error: 'Not found' });
+      res.json({ success: true });
+    }
+  );
+});
+
+// Get all characters
+app.get('/api/characters', (req, res) => {
+  db.all('SELECT * FROM characters', (err, rows) => {
+    if (err) return res.status(500).json({ error: 'DB error' });
+    res.json(rows);
+  });
+});
 
 // --- Escenas básicas: edítalas como quieras ---
 const scenes = [
